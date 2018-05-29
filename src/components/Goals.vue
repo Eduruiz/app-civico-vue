@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import api from '../api'
 
 export default {
   name: 'Goals',
@@ -81,23 +81,17 @@ export default {
     }
   },
   mounted () {
-    axios({ method: 'GET', 'url': 'http://2013.deolhonasmetas.org.br/api/public/districts' })
-      .then(result => {
-        this.districts = result.data.districts
+    api.getDistricts()
+      .then(districts => {
+        this.districts = districts
         this.loadingText = 'Escolha o Distrito'
-      },
-      error => {
-        console.error(error)
       })
   },
   methods: {
     fetchGoals (id) {
-      axios({ method: 'GET', 'url': 'http://2013.deolhonasmetas.org.br/api/public/goals?region_id=' + id })
-        .then(result => {
-          this.goals = result.data.goals
-        },
-        error => {
-          console.error(error)
+      api.getGoals(id)
+        .then(goals => {
+          this.goals = goals
         })
     }
   }
