@@ -17,7 +17,7 @@
         </div>
 
         <div class="search-box__results">
-            <article v-for="goal in goals" v-bind:key="goal">
+            <article v-for="goal in goals" v-bind:key="goal.number">
                 <h2>META: {{ goal.name }}</h2>
                 <h3>{{ goal.description }}</h3>
                 <span>Orçamento Esperado: {{ Number(goal.expected_budget).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</span>
