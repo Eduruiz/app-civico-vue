@@ -9,6 +9,9 @@ export default {
     return axios.get('/districts')
       .then(response => {
         return response.data.districts
+      },
+      error => {
+        console.error(error)
       })
   },
 
@@ -16,6 +19,9 @@ export default {
     return axios.get('/goals?region_id=' + id)
       .then(response => {
         return response.data.goals
+      },
+      error => {
+        console.error(error)
       })
   }
 }
