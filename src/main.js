@@ -10,4 +10,8 @@ new Vue({
   el: '#app',
   components: { App },
   template: '<App/>'
+},
+
+window.snapSaveState = () => {
+  document.querySelector('#app').setAttribute('data-server-rendered', 'true')
 })
